@@ -1,7 +1,8 @@
 # Auto-generated config.Config textproto
 email {}
 server {
-  application_name: "TrailBase"
+  application_name: "React-admin App"
+  site_url: "https://x83jl90x-5173.uks1.devtunnels.ms"
   logs_retention_sec: 604800
 }
 auth {
@@ -9,3 +10,13 @@ auth {
   refresh_token_ttl_sec: 2592000
 }
 jobs {}
+record_apis: [{
+  name: "cars"
+  table_name: "cars"
+  acl_world: [READ]
+  acl_authenticated: [READ]
+  create_access_rule: "TRUE"
+  read_access_rule: "TRUE"
+  update_access_rule: "TRUE"
+  delete_access_rule: "TRUE"
+}]
