@@ -1,4 +1,4 @@
-import { DataTable, List ,Edit, SimpleForm, TextInput, ReferenceField, Create, TextField, useGetIdentity, NumberField, useGetOne, Loading } from 'react-admin';
+import { DataTable, List ,Edit, SimpleForm, TextInput, ReferenceField, Create, TextField, useGetIdentity, NumberField, useGetOne, Loading, ReferenceInput, AutocompleteInput } from 'react-admin';
 
 export const CarsList = () => {
     const { identity } = useGetIdentity();
@@ -15,9 +15,12 @@ export const CarsList = () => {
     }
 
     const searchBar = [
-        <TextInput label="Search by model" source="model" alwaysOn />,      // source => what column
-        <TextInput label="Search by brand" source="brand" alwaysOn />,      // label => prompt text
-        <TextInput label="Search by year" source="year" alwaysOn />
+        <TextInput source="model" alwaysOn />,      // source => what column
+        <TextInput source="brand" alwaysOn />,      
+        <TextInput source="year" alwaysOn />,
+        <ReferenceInput source="user_id" reference="users" alwaysOn>
+            <AutocompleteInput optionText="email" />   {/* This tells it to show the 'email' in the dropdown */}                  
+        </ReferenceInput>
     ];
 
     return (
