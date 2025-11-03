@@ -6,7 +6,7 @@ export const CarsList = () => (
             <DataTable.Col source="model" />
             <DataTable.Col source="brand" />
             <DataTable.Col source="year" />
-            <DataTable.Col label="user_id">
+            <DataTable.Col label="owner email">
                 <ReferenceField 
                     source="user_id"     
                     reference="users"   
