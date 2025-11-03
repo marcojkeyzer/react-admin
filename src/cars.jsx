@@ -3,9 +3,9 @@ import { DataTable, List ,Edit, SimpleForm, TextInput, ReferenceField, Create, T
 export const CarsList = () => {
     const { identity } = useGetIdentity();
 
-    const { data } = useGetOne(             // get one entry
-            'users',                        // from 'users' table
-            { id: identity?.id },           // where id = identity.id
+    const { data } = useGetOne(         // get one entry
+        'users',                        // from 'users' table
+        { id: identity?.id },           // where id = identity.id
     );
 
     let filter = {user_id: identity?.id}    // filter by only current user_id
