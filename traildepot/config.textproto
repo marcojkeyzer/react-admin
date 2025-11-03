@@ -22,7 +22,6 @@ record_apis: [{
 }, {
   name: "users"
   table_name: "users"
-  acl_authenticated: [READ, SCHEMA]
+  acl_authenticated: [READ]
   read_access_rule: "TRUE"
-  schema_access_rule: "TRUE"
 }]

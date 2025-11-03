@@ -8,7 +8,7 @@ const { dataProvider, authProvider } = await createTrailbaseProvider(TRAILBASE_U
 const App = () => (
   <Admin dataProvider={dataProvider} authProvider={authProvider}>
     <Resource name="cars" list={CarsList} edit={CarsEdit} create={CarsCreate} />
-    <Resource name="users" list={ListGuesser}  />
+    <Resource name="users" list={ListGuesser}/>
   </Admin>
 );
 export default App;

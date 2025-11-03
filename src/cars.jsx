@@ -1,27 +1,35 @@
-import { DataTable, List ,Edit, SimpleForm, TextInput, ReferenceField, Create, TextField, useGetIdentity, HIDE_FILTER, Show } from 'react-admin';
+import { DataTable, List ,Edit, SimpleForm, TextInput, ReferenceField, Create, TextField, useGetIdentity, NumberField, useGetOne, Loading } from 'react-admin';
 
 export const CarsList = () => {
     const { identity } = useGetIdentity();
+
+    const { data } = useGetOne(             // get one entry
+            'users',                        // from 'users' table
+            { id: identity?.id },           // where id = identity.id
+    );
+
+    let filter = {user_id: identity?.id}    // filter by only current user_id
     
-    const filter = {user_id: identity?.id}  //create a filter to compare item user_id and current user's id
+    if (data?.admin == 1) {
+        filter = {}                         // if admin -> filter by nothing (show all)
+    }
 
     return (
-    <List filter={filter}> {/* set filter on list */}
-    
-        <DataTable>
-            <DataTable.Col source="model" />
-            <DataTable.Col source="brand" />
-            <DataTable.Col source="year" />
-            <DataTable.Col label="Owner">
-                <ReferenceField 
-                    source="user_id"        
-                    reference="users"       
-                >
-                    <TextField source="email"></TextField>   
-                </ReferenceField>
-            </DataTable.Col>
-        </DataTable>
-    </List>
+        <List filter={filter}> {/* set filter on list */}
+            <DataTable>
+                <DataTable.Col source="model" />
+                <DataTable.Col source="brand" />
+                <DataTable.Col source="year" />
+                <DataTable.Col label="Owner">
+                    <ReferenceField 
+                        source="user_id"        
+                        reference="users"       
+                    >
+                        <TextField source="email"></TextField>
+                    </ReferenceField>
+                </DataTable.Col>
+            </DataTable>
+        </List>
     )
 }
 
