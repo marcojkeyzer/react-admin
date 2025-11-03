@@ -14,8 +14,14 @@ export const CarsList = () => {
         filter = {}                         // if admin -> filter by nothing (show all)
     }
 
+    const searchBar = [
+        <TextInput label="Search by model" source="model" alwaysOn />,      // source => what column
+        <TextInput label="Search by brand" source="brand" alwaysOn />,      // label => prompt text
+        <TextInput label="Search by year" source="year" alwaysOn />
+    ];
+
     return (
-        <List filter={filter}> {/* set filter on list */}
+        <List filter={filter} filters={searchBar}> {/* set filter on list */}
             <DataTable>
                 <DataTable.Col source="model" />
                 <DataTable.Col source="brand" />
