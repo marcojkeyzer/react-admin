@@ -6,12 +6,13 @@ export const CarsList = () => (
             <DataTable.Col source="model" />
             <DataTable.Col source="brand" />
             <DataTable.Col source="year" />
-            <DataTable.Col label="owner email">
+            <DataTable.Col label="FK email">{/*name our new column*/}
                 <ReferenceField 
-                    source="user_id"     
-                    reference="users"   
+                    source="user_id"        //link user_id from current table
+                    reference="users"       //to users table
                 >
-                    <TextField source="email" />
+                    {/* get email column from users table */}
+                    <TextField source="email"></TextField>   
                 </ReferenceField>
             </DataTable.Col>
         </DataTable>
